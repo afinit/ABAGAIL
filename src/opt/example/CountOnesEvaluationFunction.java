@@ -10,17 +10,28 @@ import shared.Instance;
  * @version 1.0
  */
 public class CountOnesEvaluationFunction implements EvaluationFunction {
-    /**
-     * @see opt.EvaluationFunction#value(opt.OptimizationData)
-     */
-    public double value(Instance d) {
-        Vector data = d.getData();
-        double val = 0;
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i) == 1) {
-                val++;
-            }
-        }
-        return val;
-    }
+   /**
+    * @see opt.EvaluationFunction#value(opt.OptimizationData)
+    * totalcalls modifications provided by chappers
+    */
+   private int totalCalls;
+   private double lastVal = 0.0;
+
+   public double value(Instance d) {
+       this.totalCalls++;
+       Vector data = d.getData();
+       double val = 0;
+       for (int i = 0; i < data.size(); i++) {
+           if (data.get(i) == 1) {
+               val++;
+           }
+       }
+       return val;
+   }
+
+   public int getTotalCalls() { return totalCalls; }
+   public void clearCount() {
+       totalCalls = 0;
+       lastVal = 0.0;
+   }
 }
