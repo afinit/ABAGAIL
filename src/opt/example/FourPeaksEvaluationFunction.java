@@ -23,10 +23,15 @@ public class FourPeaksEvaluationFunction implements EvaluationFunction {
         this.t = t;
     }
 
+    private int totalCalls;
+    private double lastVal = 0.0;
     /**
      * @see opt.EvaluationFunction#value(opt.OptimizationData)
      */
     public double value(Instance d) {
+        this.totalCalls++;
+        double val;
+        
         Vector data = d.getData();
         int i = 0;
         while (i < data.size() && data.get(i) == 1) {
@@ -42,8 +47,14 @@ public class FourPeaksEvaluationFunction implements EvaluationFunction {
         if (head > t && tail > t) {
             r = data.size();
         }
-        return Math.max(tail, head) + r;
+        
+        val = Math.max(tail, head) + r;
+        return val;
     }
-    
-    
+
+    public int getTotalCalls() {return totalCalls; }
+    public void clearCount() {
+        totalCalls = 0;
+        lastVal = 0.0;
+    }
 }
