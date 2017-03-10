@@ -42,7 +42,13 @@ public class FMeasureError extends AbstractErrorMeasure
         double sens = class1_pos/class1_count;
         double spec = class0_pos/class0_count;
 
-        return 1 - ( 2 * ( sens * spec ) / ( sens + spec ) );
+        if( sens + spec == 0 ){
+          return 1;
+        }
+        else{
+          return 1 - ( 2 * ( sens * spec ) / ( sens + spec ) );
+        }
+        return 1;
     }
 
     /**
