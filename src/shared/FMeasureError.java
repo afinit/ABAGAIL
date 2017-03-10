@@ -48,7 +48,6 @@ public class FMeasureError extends AbstractErrorMeasure
         else{
           return 1 - ( 2 * ( sens * spec ) / ( sens + spec ) );
         }
-        return 1;
     }
 
     /**
