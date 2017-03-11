@@ -44,7 +44,7 @@ public class NeuralNetworkOptimizationProblem implements HillClimbingProblem, Ge
      * The distribution
      */
     private Distribution dist;
-    
+
     /**
      * Make a new neural network optimization
      * @param examples the examples
@@ -80,7 +80,7 @@ public class NeuralNetworkOptimizationProblem implements HillClimbingProblem, Ge
     public Instance neighbor(Instance d) {
         return neighbor.neighbor(d);
     }
-    
+
 
     /**
      * @see opt.GeneticAlgorithmProblem#mate(opt.Instance, opt.Instance)
@@ -94,6 +94,14 @@ public class NeuralNetworkOptimizationProblem implements HillClimbingProblem, Ge
      */
     public void mutate(Instance d) {
         mutate.mutate(d);
+    }
+
+    public void clearCount(){
+        eval.clearCount();
+    }
+
+    public int getTotalCalls(){
+        return eval.getTotalCalls();
     }
 
 }

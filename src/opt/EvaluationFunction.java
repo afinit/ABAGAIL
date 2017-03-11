@@ -8,12 +8,14 @@ import shared.Instance;
  * @version 1.0
  */
 public interface EvaluationFunction {
-    
+
     /**
      * Evaluate a data
      * @param d the data to evaluate
      * @return the value
      */
     public abstract double value(Instance d);
+    public int getTotalCalls();
+    public void clearCount();
 
 }
