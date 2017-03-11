@@ -13,6 +13,9 @@ import shared.Instance;
  * @version 1.0
  */
 public class NeuralNetworkEvaluationFunction implements EvaluationFunction {
+
+    private int totalCalls;
+
     /**
      * The network
      */
@@ -25,7 +28,7 @@ public class NeuralNetworkEvaluationFunction implements EvaluationFunction {
      * The error measure
      */
     private ErrorMeasure measure;
-    
+
     /**
      * Make a new neural network evaluation function
      * @param network the network
@@ -43,6 +46,7 @@ public class NeuralNetworkEvaluationFunction implements EvaluationFunction {
      * @see opt.OptimizationProblem#value(opt.OptimizationData)
      */
     public double value(Instance d) {
+        this.totalCalls++;
         // set the links
         Vector weights = d.getData();
         network.setWeights(weights);
@@ -57,4 +61,8 @@ public class NeuralNetworkEvaluationFunction implements EvaluationFunction {
         return 1 / error;
     }
 
+    public int getTotalCalls() { return totalCalls; }
+    public void clearCount() {
+        totalCalls = 0;
+    }
 }
