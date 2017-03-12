@@ -65,6 +65,5 @@ public class ContinuousPeaksEvaluationFunction implements EvaluationFunction {
     public int getTotalCalls() {return totalCalls; }
     public void clearCount() {
         totalCalls = 0;
-        lastVal = 0.0;
     }
 }
