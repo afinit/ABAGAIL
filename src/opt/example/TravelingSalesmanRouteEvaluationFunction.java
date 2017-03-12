@@ -16,7 +16,9 @@ public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanE
      * Make a new route evaluation function
      * @param points the points of the cities
      */
+    private int totalCalls;
     public TravelingSalesmanRouteEvaluationFunction(double[][] points) {
+        this.totalCalls = 0;
         super(points);
     }
 
@@ -24,6 +26,7 @@ public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanE
      * @see opt.EvaluationFunction#value(opt.OptimizationData)
      */
     public double value(Instance d) {
+        this.totalCalls++;
         double distance = 0;
         for (int i = 0; i < d.size() - 1; i++) {
             distance += getDistance(d.getDiscrete(i), d.getDiscrete(i+1));
@@ -32,5 +35,8 @@ public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanE
         return 1/distance;
     }
 
-
+    public int getTotalCalls() {return totalCalls; }
+    public void clearCount() {
+        totalCalls = 0;
+    }
 }
