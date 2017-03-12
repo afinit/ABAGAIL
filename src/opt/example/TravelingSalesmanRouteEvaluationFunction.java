@@ -18,8 +18,8 @@ public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanE
      */
     private int totalCalls;
     public TravelingSalesmanRouteEvaluationFunction(double[][] points) {
-        this.totalCalls = 0;
         super(points);
+        this.totalCalls = 0;
     }
 
     /**
